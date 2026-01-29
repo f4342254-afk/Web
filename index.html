@@ -147,20 +147,7 @@
         .skeleton { background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 0.5rem; opacity: 0.7; }
         body.light-theme .skeleton { background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%); }
 
-        /* Chat Widget */
-        .chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 100; font-family: 'Inter', sans-serif; }
-        .chat-btn { width: 60px; height: 60px; border-radius: 50%; background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.3s; position: relative; }
-        .chat-btn:hover { transform: scale(1.1); }
-        .chat-window { position: absolute; bottom: 80px; right: 0; width: 300px; background: var(--card-bg); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid var(--glass-border); overflow: hidden; transform-origin: bottom right; transform: scale(0); opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .chat-window.open { transform: scale(1); opacity: 1; }
-        .chat-header { background: #128C7E; padding: 15px; color: white; display: flex; align-items: center; gap: 10px; }
-        .chat-body { padding: 15px; max-height: 300px; overflow-y: auto; background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); background-size: cover; }
-        .chat-bubble { background: white; color: black; padding: 8px 12px; border-radius: 0 10px 10px 10px; margin-bottom: 10px; font-size: 13px; width: fit-content; max-width: 80%; box-shadow: 0 1px 2px rgba(0,0,0,0.1); position: relative; }
-        .typing-indicator span { display: inline-block; width: 5px; height: 5px; background: #9ca3af; border-radius: 50%; animation: typing 1.4s infinite ease-in-out; margin: 0 1px; }
-        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        /* Chat Widget REMOVED */
     </style>
 </head>
 <body class="text-white min-h-screen flex flex-col font-bangla relative selection:bg-emerald-500 selection:text-white">
@@ -364,7 +351,7 @@
                             <h3 class="text-gray-300 font-semibold text-sm border-l-2 border-emerald-500 pl-3"><span class="lang-bn">আপনার তথ্য দিন</span><span class="lang-en hidden">Your Information</span></h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div class="relative">
-                                    <label id="senderLabel" class="block text-gray-400 text-xs mb-1.5 ml-1">সেন্ডার নাম্বার</label>
+                                    <label id="senderLabel" class="block text-gray-400 text-xs mb-1.5 ml-1">সেন্ডার নাম্বার/UID শেষের ৪ টা ডিজিট</label>
                                     <input type="text" id="userNumber" placeholder="xxxx" inputmode="numeric" maxlength="4" oninput="if(this.value.length > 4) this.value = this.value.slice(0, 4); validateForm()" class="w-full glass-input text-white rounded-xl px-4 py-3 eng-font focus:outline-none text-sm transition-all text-center tracking-widest text-lg font-bold">
                                     <p id="senderError" class="text-[10px] text-red-400 mt-1 absolute right-1 top-0 hidden"><i class="fa-solid fa-circle-xmark"></i> ভুল!</p>
                                 </div>
@@ -412,8 +399,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- Rate Comparison Widget Removed -->
             </div>
             
             <div class="space-y-6">
@@ -446,25 +431,7 @@
         </div>
     </main>
 
-    <!-- Chat Widget HTML -->
-    <div class="chat-widget">
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                <div>
-                    <p class="font-bold text-sm">Money Exchanger BD Support</p>
-                    <p class="text-[10px] opacity-80">Typically replies instantly</p>
-                </div>
-                <i class="fa-solid fa-xmark ml-auto cursor-pointer" onclick="toggleChat()"></i>
-            </div>
-            <div class="chat-body" id="chatBody">
-                <div class="chat-bubble">হ্যালো স্যার! আপনাকে কিভাবে সাহায্য করতে পারি? 👋</div>
-            </div>
-        </div>
-        <div class="chat-btn" onclick="toggleChat()">
-            <i class="fa-solid fa-headset text-white text-2xl"></i>
-        </div>
-    </div>
+    <!-- Chat Widget REMOVED Completely as per request -->
 
     <footer class="glass-panel border-t border-white/5 py-8 mt-8 z-10 relative">
         <div class="container mx-auto px-4 text-center space-y-4">
@@ -483,13 +450,68 @@
     <canvas id="confetti" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[100]"></canvas>
     <div id="toast" class="fixed top-24 right-5 bg-slate-900/90 border border-white/10 text-white px-6 py-4 rounded-xl shadow-2xl transform translate-x-[200%] transition-transform duration-500 z-[60] backdrop-blur-xl flex items-center gap-3"><div id="toastIcon" class="w-8 h-8 rounded-full flex items-center justify-center bg-white/10"></div><span id="toastMsg" class="font-medium text-sm">Message</span></div>
 
-    <!-- Modals (Privacy, Time, Tracking, QR) remain same -->
+    <!-- Modals -->
+    <!-- Privacy Modal Updated with Professional Dual Language Content -->
     <div id="privacyModal" class="fixed inset-0 z-[120] bg-black/95 hidden items-center justify-center p-4">
         <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 overflow-y-auto max-h-[80vh] relative animate-modal-pop border border-slate-700">
             <button onclick="togglePrivacyModal(false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
-            <h2 class="text-xl font-bold text-emerald-400 mb-4 border-b border-white/10 pb-2"><span class="lang-bn">গোপনীয়তা নীতি ও শর্তাবলী</span><span class="lang-en hidden">Privacy Policy & Terms</span></h2>
-            <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-lg mb-4 text-xs text-red-200"><i class="fa-solid fa-scale-balanced mr-1"></i> <span class="lang-bn">এই প্ল্যাটফর্ম বাংলাদেশের প্রচলিত আর্থিক আইন মেনে চলে।</span><span class="lang-en hidden">This platform operates under Bangladesh financial laws.</span></div>
-            <div class="space-y-4 text-xs text-gray-300 leading-relaxed"><p>Rules and policies...</p></div>
+            <h2 class="text-xl font-bold text-emerald-400 mb-4 border-b border-white/10 pb-2">
+                <span class="lang-bn">গোপনীয়তা নীতি ও শর্তাবলী</span>
+                <span class="lang-en hidden">Privacy Policy & Terms</span>
+            </h2>
+            <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-lg mb-4 text-xs text-red-200">
+                <i class="fa-solid fa-scale-balanced mr-1"></i> 
+                <span class="lang-bn">এই প্ল্যাটফর্ম বাংলাদেশের প্রচলিত আর্থিক আইন মেনে চলে।</span>
+                <span class="lang-en hidden">This platform operates under Bangladesh financial laws.</span>
+            </div>
+            
+            <!-- Bangla Content -->
+            <div class="lang-bn space-y-4 text-xs text-gray-300 leading-relaxed font-bangla">
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">১. সেবার ধরন ও সম্মতি</h3>
+                    <p>আমরা একটি পিয়ার-টু-পিয়ার (P2P) ফ্রিল্যান্স কারেন্সি এক্সচেঞ্জ সার্ভিস প্রদান করি। আমরা কোনো ব্যাংক নই। মানি লন্ডারিং, অবৈধ জুয়া বা সন্ত্রাসে অর্থায়ন কঠোরভাবে নিষিদ্ধ। কোনো সন্দেহজনক লেনদেন হলে আমরা আইনানুগ ব্যবস্থা নেবো।</p>
+                </div>
+                
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">২. তথ্য সুরক্ষা ও নিরাপত্তা</h3>
+                    <p>আপনার ফোন নম্বর এবং TrxID শুধুমাত্র লেনদেন যাচাই করার জন্য সংরক্ষণ করা হয়। আমরা আপনার তথ্য তৃতীয় কোনো পক্ষের কাছে বিক্রি করি না। সকল তথ্য নিরাপদ HTTPS এনক্রিপশনের মাধ্যমে প্রসেস করা হয়।</p>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">৩. রিফান্ড পলিসি</h3>
+                    <p>যদি আমাদের সিস্টেমের কোনো ত্রুটির কারণে ২৪ ঘন্টার মধ্যে অর্ডার সম্পন্ন না হয়, তবে আপনার টাকা ফেরত দেওয়া হবে। কিন্তু আপনি যদি ভুল নাম্বারে টাকা পাঠান বা ভুল তথ্য দেন, তবে তার দায়ভার আমরা নেবো না এবং রিফান্ড হবে না।</p>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">৪. ব্যবহারকারীর দায়িত্ব</h3>
+                    <p>টাকা পাঠানোর আগে অবশ্যই "সেন্ড মানি" নাম্বারটি চেক করে নিন। আমাদের নাম্বার যেকোনো সময় পরিবর্তন হতে পারে। পুরাতন বা ভুল নাম্বারে টাকা পাঠালে আমরা দায়ী থাকবো না।</p>
+                </div>
+                <p class="text-[10px] text-center opacity-50 mt-4">সর্বশেষ আপডেট: জানুয়ারি ২০২৬</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en hidden space-y-4 text-xs text-gray-300 leading-relaxed font-english">
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">1. Service Nature & Compliance</h3>
+                    <p>We provide a Peer-to-Peer (P2P) freelance currency exchange service. We are <strong>NOT</strong> a bank. We strictly prohibit money laundering, illegal gambling, or funding terror activities. Any suspicious transaction will be reported to authorities.</p>
+                </div>
+                
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">2. Data Privacy & Security</h3>
+                    <p>Your Phone Number and TrxID are stored <strong>ONLY</strong> for transaction verification purposes. We do not sell your data to third parties. All data is processed via secure HTTPS encryption.</p>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">3. Refund Policy</h3>
+                    <p>If we fail to complete your order within 24 hours due to our system fault, a full refund will be issued to your original payment method. User errors (wrong number given) are not eligible for refunds once processed.</p>
+                </div>
+
+                <div class="p-3 bg-white/5 rounded-lg">
+                    <h3 class="font-bold text-emerald-400 mb-2">4. User Responsibility</h3>
+                    <p>Users must verify the "Send To" number before every transaction. Admin numbers may change anytime. We are not responsible if you send money to an old or wrong number.</p>
+                </div>
+                <p class="text-[10px] text-center opacity-50 mt-4">Last Updated: Jan 2026</p>
+            </div>
         </div>
     </div>
 
@@ -533,15 +555,16 @@
         </div>
     </div>
     
-    <!-- Receipt Download Modal -->
+    <!-- Receipt Download Modal (NO CLOSE BUTTON, NO BACKDROP CLICK) -->
     <div id="receiptModal" class="fixed inset-0 z-[110] bg-black/95 hidden items-center justify-center p-4">
-        <div class="glass-panel w-full max-w-sm rounded-2xl p-6 text-center animate-modal-pop">
+        <!-- Removed pointer-events-none from inner div to make button clickable, but outer remains blocking -->
+        <div class="glass-panel w-full max-w-sm rounded-2xl p-6 text-center animate-modal-pop relative">
+            <!-- CLOSE BUTTON REMOVED -->
             <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-file-invoice-dollar text-emerald-500 text-2xl"></i></div>
-            <h3 class="text-xl font-bold text-white mb-2">Order Submitted!</h3>
-            <p class="text-gray-400 text-sm mb-6">Your transaction receipt is ready.</p>
+            <h3 class="text-xl font-bold text-white mb-2">Order Ready!</h3>
+            <p class="text-gray-400 text-sm mb-6">Please download receipt to complete order.</p>
             <div class="space-y-3">
-                <button onclick="generateReceipt()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2"><i class="fa-solid fa-download"></i> Download Receipt</button>
-                <button onclick="location.reload()" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold py-3 rounded-xl">Close</button>
+                <button onclick="generateReceipt()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2"><i class="fa-solid fa-download"></i> Download & Send</button>
             </div>
         </div>
     </div>
@@ -568,13 +591,18 @@
         ];
 
         let isShopOpen = true;
+        let isFetching = false; // 🔥 Semaphore lock to prevent overlapping requests
 
         document.addEventListener("DOMContentLoaded", function() {
-            // 🔒 CACHE: Load Config from cache first
+            // 🔒 CACHE: Load Config from cache first for INSTANT LOAD
             loadConfigFromCache();
             toggleLoading(true); // Show Skeletons
             
-            fetchLiveSettings(); setInterval(fetchLiveSettings, 8000); 
+            // 🔒 1 SECOND POLLING ENABLED AS REQUESTED
+            // Note: This makes the site check for new data every 1000ms
+            fetchLiveSettings(); 
+            setInterval(fetchLiveSettings, 1000); 
+
             const now = new Date();
             document.getElementById('userDate').value = now.toISOString().split('T')[0];
             let h = now.getHours(), m = now.getMinutes().toString().padStart(2, '0'), ampm = h >= 12 ? 'PM' : 'AM';
@@ -601,6 +629,13 @@
             const contentMain = document.getElementById('calculatorContent');
             const skeletonRes = document.getElementById('reserveSkeleton');
             const contentRes = document.getElementById('reserveContent');
+
+            // Only show skeleton if NO data is cached
+            const cachedConfig = localStorage.getItem('user_config');
+            if(cachedConfig && isLoading) {
+                // If we have cache, don't show skeleton, just show cached data
+                return; 
+            }
 
             if(isLoading) {
                 skeletonMain.classList.remove('hidden');
@@ -637,32 +672,6 @@
             }
         }
 
-        // Chat Widget Toggle
-        function toggleChat() {
-            const win = document.getElementById('chatWindow');
-            const body = document.getElementById('chatBody');
-            
-            if(win.classList.contains('open')) {
-                win.classList.remove('open');
-            } else {
-                win.classList.add('open');
-                // Simulate typing
-                if(body.children.length === 1) {
-                    const typing = document.createElement('div');
-                    typing.className = 'chat-bubble typing-indicator';
-                    typing.innerHTML = '<span></span><span></span><span></span>';
-                    body.appendChild(typing);
-                    setTimeout(() => {
-                        typing.remove();
-                        const msg = document.createElement('div');
-                        msg.className = 'chat-bubble';
-                        msg.innerText = "Rates বা Order নিয়ে কোনো প্রশ্ন থাকলে বলতে পারেন।";
-                        body.appendChild(msg);
-                    }, 1500);
-                }
-            }
-        }
-
         // 🔒 CACHE LOGIC for Config
         function loadConfigFromCache() {
             const cachedConfig = localStorage.getItem('user_config');
@@ -673,61 +682,72 @@
                     Object.assign(CONFIG, savedData);
                     updateUI();
                     updateShopStatus();
+                    // Update ticker from cache if possible (using mock here but can be extended)
                 } catch(e) { console.error("Config Cache Error"); }
             }
         }
 
         function fetchLiveSettings() {
-            fetch(`${GOOGLE_SCRIPT_URL}?action=getSettings&t=${Date.now()}`).then(r => r.json()).then(data => {
-                
-                if(data.notice_text) { 
-                    CONFIG.notice.bn = data.notice_text; 
-                    CONFIG.notice.en = data.notice_text; 
-                    document.getElementById('noticeText').innerText = data.notice_text;
-                }
-                
-                // Wallet Info (Keeping existing logic)
-                if(data.bkash) CONFIG.accounts.bkash = data.bkash;
-                if(data.nagad) CONFIG.accounts.nagad = data.nagad;
-                if(data.rocket) CONFIG.accounts.rocket = data.rocket;
-                if(data.rocket_extra) CONFIG.accounts.rocket_extra = data.rocket_extra; 
-                if(data.upay) CONFIG.accounts.upay = data.upay;
-                if(data.tallykhata) CONFIG.accounts.tallykhata = data.tallykhata;
-                if(data.binance_id) CONFIG.accounts.binance = data.binance_id;
-                if(data.bitget_id) CONFIG.accounts.bitget = data.bitget_id;
-                if(data.mexc_id) CONFIG.accounts.mexc = data.mexc_id;
-                if(data.redotpay_id) CONFIG.accounts.redotpay = data.redotpay_id;
-                if(data.whatsapp) CONFIG.whatsappNumber = data.whatsapp;
+            if (isFetching) return; // 🔥 Exit if a request is already in progress
+            isFetching = true;
 
-                if(data.reserveBDT) CONFIG.reserve.bdt = data.reserveBDT;
-                if(data.reserveUSDT) CONFIG.reserve.usdt = data.reserveUSDT;
+            fetch(`${GOOGLE_SCRIPT_URL}?action=getSettings&t=${Date.now()}`)
+                .then(r => r.json())
+                .then(data => {
+                    if(data.notice_text) { 
+                        CONFIG.notice.bn = data.notice_text; 
+                        CONFIG.notice.en = data.notice_text; 
+                        document.getElementById('noticeText').innerText = data.notice_text;
+                    }
+                    
+                    // Wallet Info (Keeping existing logic)
+                    if(data.bkash) CONFIG.accounts.bkash = data.bkash;
+                    if(data.nagad) CONFIG.accounts.nagad = data.nagad;
+                    if(data.rocket) CONFIG.accounts.rocket = data.rocket;
+                    if(data.rocket_extra) CONFIG.accounts.rocket_extra = data.rocket_extra; 
+                    if(data.upay) CONFIG.accounts.upay = data.upay;
+                    if(data.tallykhata) CONFIG.accounts.tallykhata = data.tallykhata;
+                    if(data.binance_id) CONFIG.accounts.binance = data.binance_id;
+                    if(data.bitget_id) CONFIG.accounts.bitget = data.bitget_id;
+                    if(data.mexc_id) CONFIG.accounts.mexc = data.mexc_id;
+                    if(data.redotpay_id) CONFIG.accounts.redotpay = data.redotpay_id;
+                    if(data.whatsapp) CONFIG.whatsappNumber = data.whatsapp;
 
-                // Rates
-                if(data.rate_binance_buy) CONFIG.platformRates.binance.buy = parseFloat(data.rate_binance_buy);
-                if(data.rate_binance_sell) CONFIG.platformRates.binance.sell = parseFloat(data.rate_binance_sell);
-                if(data.rate_bitget_buy) CONFIG.platformRates.bitget.buy = parseFloat(data.rate_bitget_buy);
-                if(data.rate_bitget_sell) CONFIG.platformRates.bitget.sell = parseFloat(data.rate_bitget_sell);
-                if(data.rate_mexc_buy) CONFIG.platformRates.mexc.buy = parseFloat(data.rate_mexc_buy);
-                if(data.rate_mexc_sell) CONFIG.platformRates.mexc.sell = parseFloat(data.rate_mexc_sell);
-                if(data.rate_redotpay_buy) CONFIG.platformRates.redotpay.buy = parseFloat(data.rate_redotpay_buy);
-                if(data.rate_redotpay_sell) CONFIG.platformRates.redotpay.sell = parseFloat(data.rate_redotpay_sell);
+                    if(data.reserveBDT) CONFIG.reserve.bdt = data.reserveBDT;
+                    if(data.reserveUSDT) CONFIG.reserve.usdt = data.reserveUSDT;
 
-                // Service Fees
-                if(data.fee_slab_1) CONFIG.fees.slab1 = parseFloat(data.fee_slab_1);
-                if(data.fee_slab_2) CONFIG.fees.slab2 = parseFloat(data.fee_slab_2);
-                if(data.fee_slab_3) CONFIG.fees.slab3 = parseFloat(data.fee_slab_3);
-                if(data.fee_slab_4) CONFIG.fees.slab4 = parseFloat(data.fee_slab_4);
-                if(data.fee_slab_5) CONFIG.fees.slab5 = parseFloat(data.fee_slab_5);
+                    // Rates
+                    if(data.rate_binance_buy) CONFIG.platformRates.binance.buy = parseFloat(data.rate_binance_buy);
+                    if(data.rate_binance_sell) CONFIG.platformRates.binance.sell = parseFloat(data.rate_binance_sell);
+                    if(data.rate_bitget_buy) CONFIG.platformRates.bitget.buy = parseFloat(data.rate_bitget_buy);
+                    if(data.rate_bitget_sell) CONFIG.platformRates.bitget.sell = parseFloat(data.rate_bitget_sell);
+                    if(data.rate_mexc_buy) CONFIG.platformRates.mexc.buy = parseFloat(data.rate_mexc_buy);
+                    if(data.rate_mexc_sell) CONFIG.platformRates.mexc.sell = parseFloat(data.rate_mexc_sell);
+                    if(data.rate_redotpay_buy) CONFIG.platformRates.redotpay.buy = parseFloat(data.rate_redotpay_buy);
+                    if(data.rate_redotpay_sell) CONFIG.platformRates.redotpay.sell = parseFloat(data.rate_redotpay_sell);
 
-                // 🔒 CACHE: Update local storage
-                localStorage.setItem('user_config', JSON.stringify(CONFIG));
+                    // Service Fees
+                    if(data.fee_slab_1) CONFIG.fees.slab1 = parseFloat(data.fee_slab_1);
+                    if(data.fee_slab_2) CONFIG.fees.slab2 = parseFloat(data.fee_slab_2);
+                    if(data.fee_slab_3) CONFIG.fees.slab3 = parseFloat(data.fee_slab_3);
+                    if(data.fee_slab_4) CONFIG.fees.slab4 = parseFloat(data.fee_slab_4);
+                    if(data.fee_slab_5) CONFIG.fees.slab5 = parseFloat(data.fee_slab_5);
 
-                document.getElementById('reserveBDT').innerText = "৳ " + CONFIG.reserve.bdt;
-                document.getElementById('reserveUSDT').innerText = "$ " + CONFIG.reserve.usdt;
-                
-                toggleLoading(false); // Hide Skeletons
-                updateShopStatus(); updateUI(); 
-            }).catch(e => console.error("Settings Error:", e));
+                    // 🔒 CACHE: Update local storage
+                    localStorage.setItem('user_config', JSON.stringify(CONFIG));
+
+                    document.getElementById('reserveBDT').innerText = "৳ " + CONFIG.reserve.bdt;
+                    document.getElementById('reserveUSDT').innerText = "$ " + CONFIG.reserve.usdt;
+                    
+                    toggleLoading(false); // Hide Skeletons
+                    updateShopStatus(); updateUI(); 
+                })
+                .catch(e => {
+                    // console.warn("Network busy, skipping this poll..."); // Silent fail or warn
+                })
+                .finally(() => {
+                    isFetching = false; // 🔥 Release lock
+                });
         }
 
         // Receipt Generator (Last Stored Order Data)
@@ -767,7 +787,51 @@
             });
 
             doc.text("Note: This receipt is generated automatically.", 14, doc.lastAutoTable.finalY + 10);
+            
+            // ✅ 1. DOWNLOAD FIRST (Mandatory)
             doc.save(`Receipt_${lastOrderData.trxId}.pdf`);
+
+            // ✅ 2. ONLY THEN SEND TO SERVER
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(lastOrderData)
+            }).catch(err => console.error("Sheet Error:", err));
+
+            // --- 🚀 NEW LOGIC START: Close Modal, Reset, Redirect ---
+            
+            // 3. Close Modal Immediately
+            document.getElementById('receiptModal').classList.add('hidden');
+            document.getElementById('receiptModal').classList.remove('flex');
+
+            // 4. Clear Form & Reset State
+            document.getElementById('sendAmount').value = '';
+            document.getElementById('userNumber').value = '';
+            document.getElementById('userTrxID').value = '';
+            document.getElementById('receiverDetails').value = '';
+            document.getElementById('userWhatsapp').value = ''; 
+            
+            document.getElementById('dynamicSendPreview').classList.add('hidden');
+            document.getElementById('calcBreakdown').classList.add('hidden');
+            
+            // Disable Submit Button
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.classList.add('bg-gradient-to-r', 'from-gray-700', 'to-gray-800', 'text-gray-400', 'cursor-not-allowed', 'border-white/10');
+            btn.classList.remove('bg-gradient-to-r', 'from-emerald-500', 'to-emerald-700', 'text-white', 'cursor-pointer', 'shadow-emerald-500/20', 'animate-pulse');
+            btn.innerHTML = '<span class="lang-bn">অর্ডার কনফার্ম করুন</span><span class="lang-en hidden">Confirm Order</span><i class="fa-brands fa-whatsapp text-2xl"></i>';
+
+            // 5. Redirect to WhatsApp (Milliseconds after save)
+            const message = `*🔔 ADMIN CHECK PLEASE!*
+------------------
+🆔 TrxID: ${lastOrderData.trxId}
+💰 Amount: ${lastOrderData.amountReceived}
+🔄 Type: ${lastOrderData.platform}
+------------------
+✅ *Please verify & complete.*`.trim();
+            
+            const waURL = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(waURL, '_blank');
+            // --- 🚀 NEW LOGIC END ---
         }
 
         function updateShopStatus() {
@@ -779,7 +843,7 @@
             
             // Logic: Open from 08:00 (inclusive) to 20:00 (exclusive, i.e., until 7:59 PM)
             // 8 AM is 8, 8 PM is 20
-            const isOpen = (hour >= 8 && hour < 24);
+            const isOpen = (hour >= 8 && hour < 20);
             
             document.getElementById('closedMsgText').innerText = CONFIG.shopStatusMsg;
             document.getElementById('shopOpenTimeDisplay').innerText = "08:00 AM";
@@ -1104,11 +1168,39 @@
 
         function showWarning(msg) { document.getElementById('rangeWarning').classList.remove('hidden'); document.getElementById('warningText').innerText = msg; }
 
-        function processOrder() {
+        // 🔥 Rate Limiting Check Logic
+        function checkRateLimit() {
+            const NOW = Date.now();
+            const TIME_WINDOW = 60000; // 1 minute
+            const MAX_REQUESTS = 10;
+            
+            let requests = JSON.parse(localStorage.getItem('request_logs') || '[]');
+            // Filter out old requests
+            requests = requests.filter(time => NOW - time < TIME_WINDOW);
+            
+            if (requests.length >= MAX_REQUESTS) {
+                return false;
+            }
+            
+            requests.push(NOW);
+            localStorage.setItem('request_logs', JSON.stringify(requests));
+            return true;
+        }
+
+        // 🔥 Process Order with Strict Validation & Server Duplicate Check
+        async function processOrder() {
             if(!isShopOpen) { document.getElementById('timePopup').classList.remove('hidden'); document.getElementById('timePopup').classList.add('flex'); return; }
+            
+            // 🛑 1. Rate Limiting Check
+            if(!checkRateLimit()) {
+                showToast("ERR_RATE_LIMIT: Too many requests! Wait 1 min.", "error");
+                return;
+            }
+
             const btn = document.getElementById('submitBtn');
             if(btn.disabled) return;
-            fireConfetti();
+            
+            // Collect Data
             const sendAmount = parseFloat(document.getElementById('sendAmount').value);
             const userNumber = document.getElementById('userNumber').value.trim().toUpperCase();
             const userTrxID = document.getElementById('userTrxID').value.trim().toUpperCase();
@@ -1124,9 +1216,70 @@
             const receiveId = document.getElementById('receiveMethod').value;
             const sendObj = methods.find(m => m.id === sendId);
             const receiveObj = methods.find(m => m.id === receiveId);
+
+            // 🛑 2. Strict Data Validation (Local)
+            if(isNaN(sendAmount) || sendAmount <= 0) { showToast("ERR_INVALID_AMOUNT: Amount must be a number", "error"); return; }
+            
+            let equivalentBDT = (sendObj.type === 'bdt') ? sendAmount : sendAmount * (CONFIG.platformRates[sendObj.id]?.sell || CONFIG.rates.usdToBdt);
+            if (equivalentBDT < CONFIG.minBDTValue || equivalentBDT > CONFIG.maxBDTValue) {
+                showToast(`ERR_LIMIT_EXCEEDED: Min ${CONFIG.minBDTValue} - Max ${CONFIG.maxBDTValue} BDT`, "error");
+                return;
+            }
+
+            // Strict Regex Checking
+            if(!sendObj.senderPattern.test(userNumber)) { showToast("ERR_INVALID_SENDER_ID: Format mismatch", "error"); return; }
+            
+            // 🔥 REMOVED TrxID FORMAT CHECK as requested
+            // if(!sendObj.trxPattern.test(userTrxID)) { showToast("ERR_INVALID_TRX_ID: Invalid TrxID format", "error"); return; }
+            
+            if(receiveObj.type === 'bdt' && !patterns.bdNumber.test(receiverDetails)) { showToast("ERR_INVALID_RECEIVER: Invalid BD Number", "error"); return; }
+            
+            // 🛑 3. Duplicate TrxID Check (Local Cache)
+            let pastTrx = JSON.parse(localStorage.getItem('submitted_trx') || '[]');
+            if(pastTrx.includes(userTrxID)) {
+                showToast("ERR_DUPLICATE_TRX: Transaction ID already submitted!", "error");
+                return;
+            }
+
+            // 🛑 4. SERVER DUPLICATE CHECK (NEW FEATURE)
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Checking...';
+            btn.disabled = true;
+
+            try {
+                // Fetch all orders to check for duplicate TrxID on server
+                const checkResponse = await fetch(`${GOOGLE_SCRIPT_URL}?action=read&t=${Date.now()}`);
+                const historyData = await checkResponse.json();
+                
+                // Check if TrxID exists in history (Server Side Check)
+                const isServerDuplicate = Array.isArray(historyData) && historyData.some(item => 
+                    item.trxId && item.trxId.toString().trim().toUpperCase() === userTrxID
+                );
+                
+                if (isServerDuplicate) {
+                    showToast("ERR_DUPLICATE_SERVER: This TrxID is already used!", "error");
+                    btn.disabled = false;
+                    btn.innerHTML = originalBtnText; // Restore button
+                    return; // STOP HERE
+                }
+
+            } catch (error) {
+                console.error("Server Check Failed", error);
+                showToast("ERR_CONNECTION: Could not verify TrxID with server.", "error");
+                btn.disabled = false;
+                btn.innerHTML = originalBtnText;
+                return; // Stop if we can't verify
+            }
+
+            // If unique on server, proceed to submit
+            // Save TrxID locally
+            pastTrx.push(userTrxID);
+            if(pastTrx.length > 50) pastTrx.shift(); 
+            localStorage.setItem('submitted_trx', JSON.stringify(pastTrx));
+
+            fireConfetti();
             const result = calculateValues(sendAmount, sendObj, receiveObj);
 
-            // Store for Receipt
             lastOrderData = {
                 platform: `${sendObj.name} To ${receiveObj.name}`,
                 type: sendObj.type,
@@ -1136,30 +1289,23 @@
                 amountSent: `${result.finalAmount.toFixed(2)} ${receiveObj.type.toUpperCase()}`,
                 receiverDetails: receiverDetails,
                 contact: userWhatsapp, 
-                timestamp: `${userDate} | ${formattedTime}`, // 12H Format sent
+                timestamp: `${userDate} | ${formattedTime}`,
                 rawDate: userDate,
                 action: "create" 
             };
 
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(lastOrderData)
-            }).catch(err => console.error("Sheet Error:", err));
+            // ✅ UPDATE BUTTON TO "SENDING..." after check passes
+            btn.innerHTML = '<i class="fa-solid fa-paper-plane fa-beat"></i> Sending...';
 
-            // Show Receipt Modal instead of immediate reload
+            // 🔥 STOPPED FETCH HERE! Fetch will happen ONLY inside generateReceipt
+            // fetch(GOOGLE_SCRIPT_URL, ... ) <-- REMOVED
+
             const receiptModal = document.getElementById('receiptModal');
             receiptModal.classList.remove('hidden');
             receiptModal.classList.add('flex');
 
-            setTimeout(() => {
-                const message = `*🚀 NEW ORDER PLACED!*
-TrxID: ${userTrxID}
-Amount: ${sendAmount}
-------------------
-✅ *Status: PENDING*`.trim();
-                window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
-                // location.reload(); // Removed to allow PDF download
-            }, 3000); 
+            // --- 🛑 REMOVED AUTOMATIC REDIRECT ---
+            // The redirect will now happen when they click "Download Receipt"
         }
 
         // ✅ Updated Copy Logic to remove quotes
@@ -1182,6 +1328,16 @@ Amount: ${sendAmount}
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').innerText = msg;
             document.getElementById('toastIcon').innerHTML = type === 'success' ? '<i class="fa-solid fa-check text-emerald-400"></i>' : '<i class="fa-solid fa-xmark text-red-400"></i>';
+            
+            // Error Styling
+            if(type === 'error') {
+                toast.classList.remove('bg-slate-900/90', 'border-white/10');
+                toast.classList.add('bg-red-900/90', 'border-red-500/50');
+            } else {
+                toast.classList.add('bg-slate-900/90', 'border-white/10');
+                toast.classList.remove('bg-red-900/90', 'border-red-500/50');
+            }
+
             toast.style.transform = "translateX(0)";
             setTimeout(() => { toast.style.transform = "translateX(200%)"; }, 3000);
         }
